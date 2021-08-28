@@ -1,0 +1,46 @@
+Deploying a WordPress site over AWS using RDS
+
+1) Webserver configured on EC2 Instance 
+2) Document Root(/var/www/html) made persistent by mounting on EBS Block Device. 
+3) Static objects used in code such as pictures stored in S3 
+4) Setting up Content Delivery Network using CloudFront and using the origin domain as S3 bucket. 
+5) Finally place the Cloud Front URL on the webapp code for security and low latency.
+
+To configure WordPress site, we will create the following resources in AWS: 
+
+1) An Amazon RDS for MySQL database to store your WordPress data. 
+2) An Amazon EC2 instance to install and host the WordPress application. 
+
+Launching MySQL Providing  
+
+1) Master Username  
+2) Password  
+3) Initial Database name 
+
+Launching EC2 Instances.(with basic configurations)
+
+To run WordPress on any machine, we’ll need to install Apache, PHP, and MySQL.
+commands are:-
+> yum install httpd
+> yum install php php-mysqlnd mysql -y
+
+Then go inside document root, /var/www/html and download the WordPress file and unzip it.
+
+> yum install wget
+> wget https://wordpress.org/latest.tar.gz
+> tar -xf latest.tar.gz
+
+At last, start the httpd service and make it permanent: 
+> systemctl start httpd
+> systemctl enable httpd
+
+Now, we can login to our database through EC2 instance using the command: 
+> mysql -h <endpoint> -u <username> -p 
+
+Enter the IP address of your ec2-instance in your browser to open the WordPress configuration menu by entering initial database name, username, password and DNS endpoint of the database.
+
+Now it’s time for the fun part — go play with your new site. Configure the design, add pages and posts, and start getting users to your site.
+
+
+
+Note:Reference link for above steps (url)https://1drv.ms/w/s!ArbkgUQgmpWjhHH1NbHc3LrEstNx?e=dJdc9S
