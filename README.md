@@ -1,2 +1,2 @@
-#  Deploying a WordPress site over AWS using RDS
+#  Deploying WordPress site over AWS using RDS
 
